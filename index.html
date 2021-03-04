@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Directory</title>
+
+    <!-----------Google fonts links-------------->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+    <!-----------Stylesheets links--------------->
+    <link rel="stylesheet" type="text/css" href="css/all.css">
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!---------------jQuery link----------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="loadingLayer hidden">
+        <div class="loading"></div>
+    </div>
+
+    <div class="remUserConfirm hidden">
+        <div class="remUserConfirmWraper">
+            <h3>Are you sure you want to remove this user?</h3><br>
+            <button id="yesConfirmRemoveUser">Yes</button>
+            <button id="noConfirmRemoveUser">No</button>
+        </div>
+    </div>
+
+    <div class="editUserConfirm hidden">
+        <div class="editUserConfirmWraper">
+            <h3>Are you sure you want to update this user's details?</h3><br>
+            <button id="yesConfirmEditUser">Yes</button>
+            <button id="noConfirmEditUser">No</button>
+        </div>
+    </div>
+
+    <div class="edit userLayout hidden"> <!-----------Edit user form----------->
+        <div class="editUserForm">
+            <h1> Edit user </h1>
+            <table style="margin: 0 auto;">
+                <tr>
+                    <td><label for="editUserFirstName">First name: </label></td>
+                    <td><input id="editUserFirstName" style="width: 100%"></td>
+                </tr>
+                <tr>
+                    <td><label for="editUserLastName">Last name: </label></td>
+                    <td><input id="editUserLastName"style="width: 100%"></td>
+                </tr>
+                <tr>
+                    <td><label for="editUserEmail">Email: </label></td>
+                    <td><input id="editUserEmail"style="width: 100%"></td>
+                </tr>
+                <tr>
+                    <td><label for="editUserJobTitle">Job title: </label></td>
+                    <td><input id="editUserJobTitle" style="width: 100%"></td>
+                </tr>
+                <tr>
+                    <td style="padding-right: 10px;"><label for="editUserDepartment">Department: </label></td>
+                    <td><select style="width: 100%;" id="editUserDepartment"></select></td>
+                </tr>
+                <tr>
+                    <td><label for="editUserLocation">Location: </label></td>
+                    <td><h3 id="editUserLocation" style="width: 100%"></h3>
+                </tr>
+            </table>
+            <div class="buttonWraper">
+                <button id="editUserBtn">Edit user</button>
+                <button id="removeUserBtn">Remove user</button>
+            </div>   
+        </div>
+    </div>
+
+    <div class="add userLayout hidden"> <!-----------Add user form----------->
+        <div class="editUserForm">
+            <h1> Add user </h1>
+            <table style="margin: 0 auto;">
+                <tr>
+                    <td><label for="addUserFirstName">First name: </label></td>
+                    <td><input id="addUserFirstName"></td>
+                </tr>
+                <tr>
+                    <td><label for="addUserLastName">Last name: </label></td>
+                    <td><input id="addUserLastName"></td>
+                </tr>
+                <tr>
+                    <td><label for="addUserEmail">Email: </label></td>
+                    <td><input id="addUserEmail"></td>
+                </tr>
+                <tr>
+                    <td><label for="addUserJobTitle">Job title: </label></td>
+                    <td><input id="addUserJobTitle"></td>
+                </tr>
+                <tr>
+                    <td style="padding-right: 10px;"><label for="addUserDepartment">Department: </label></td>
+                    <td><select style="width: 100%;" id="addUserDepartment"></select></td>
+                </tr>
+                <tr>
+                    <td><label for="addUserLocation">Location: </label></td>
+                    <td><h3 id="addUserLocation"></h3>
+                </tr>
+            </table>
+            <div class="buttonWraper">
+                <button id="submitAddUserBtn">Add user</button>
+            </div>   
+        </div>
+    </div>
+
+    <div class="addDep userLayout hidden">
+        <div class="addDepartmentForm">
+            <h1> Add department </h1>
+            <table style="margin: 0 auto;">
+                <tr>
+                    <td><label for="addDepartmentName">Department name: </label></td>
+                    <td><input id="addDepartmentName"></td>
+                </tr>
+                <tr>
+                    <td style="padding-right: 10px;"><label for="addDepartmentLocation">Location: </label></td>
+                    <td><select style="width: 100%;" id="addDepartmentLocation"></select></td>
+                </tr>
+            </table>
+            <div class="buttonWraper" style="margin-bottom: 40px !important;">
+                <button id="submitAddDepartmentBtn">Add department</button>
+            </div>   
+        </div>
+    </div>
+
+    <div class="remDep userLayout hidden">
+        <div class="addDepartmentForm">
+            <h1> Remove Department </h1>
+            <table style="margin: 0 auto;">
+                <tr>
+                    <td><label for="removeDepartment" style="padding-right: 20px;">Department name: </label></td>
+                    <td><select style="width: 100%;" id="removeDepartment"></select></td>
+                </tr>
+            </table>
+            <div class="buttonWraper" style="margin-bottom: 40px !important;">
+                <button id="submitRemoveDepartmentBtn">Remove department</button>
+            </div>   
+        </div>
+    </div>
+
+    <div class="addLoc userLayout hidden">
+        <div class="addLocationForm">
+            <h1> Add location </h1>
+            <table style="margin: 0 auto;">
+                <tr>
+                    <td><label for="addLocationName" style="padding-right: 20px;">Location: </label></td>
+                    <td><input id="addLocationName"></td>
+                </tr>
+            </table>
+            <div class="buttonWraper" style="margin-bottom: 40px !important;">
+                <button id="submitAddLocationBtn">Add location</button>
+            </div>   
+        </div>
+    </div>
+
+    <div class="remLoc userLayout hidden">
+        <div class="removeLocationForm">
+            <h1> Remove location </h1>
+            <table style="margin: 0 auto;">
+                <tr>
+                    <td><label for="removeLocationName" style="padding-right: 20px;">Location: </label></td>
+                    <td><select style="width: 100%;" id="removeLocationName"></select></td>
+                </tr>
+            </table>
+            <div class="buttonWraper" style="margin-bottom: 40px !important;">
+                <button id="submitRemoveLocationBtn">Remove location</button>
+            </div>   
+        </div>
+    </div>
+
+    <div class="header">
+        <i class="fas fa-database logoDB"></i>
+        <div class="">
+            <h1>Company Directory</h1>
+        </div>
+
+        <!-- <div class="userGreeting">
+            <h2>Hello,<br><span class="userName">Guest</span></h2>
+        </div> -->
+
+        <!-- <div class="userSign">
+            <h3>Sign In</h3>
+        </div> -->
+
+    </div>
+
+    <main>
+        <div class="editPlusMenu">
+
+            <div class="editTables">
+                <h3>Department <span class="floatLeft"><span class="addIcons" id="addDepartment">+</span><span class="remIcons" id="removeDepartmentR">-</span></span></h3>
+                <h3>Location <span class="floatLeft"><span class="addIcons" id="addLocation">+</span><span class="remIcons" id="removeLocationR">-</span></span></h3>
+                <h3>User <span class="floatLeft"><span class="addIcons" id="addUser">+</span></span></h3>
+            </div>
+
+            <div class="menu">
+                <div class="menuSearch">
+                    <span>Search By: </span>
+                    <select id="orderBy" name="orderBy">
+                    <option value='p.lastName' selected>Last name</option>
+                    <option value='p.email'>Email</option>
+                    <option value='p.jobTitle'>Job title</option>
+                    <option value='d.name'>Department</option>
+                    <option value='l.name'>Location</option>
+                </select>
+                <input id="searchByVal" type="text">
+                <!-- <button>Find</button> -->
+                </div>
+            </div>
+        </div>
+
+        <section class="displayData">
+            <table class="usersData">
+                <thead class="sticky">
+                    <tr>
+                        <th id='pLastName' class="pointer">Name</th>
+                        <th id='pEmail' class="pointer hideCell">Email</th>
+                        <th id='pJobTitle' class="pointer hideCell">Job Title</th>
+                        <th id='dName' class="pointer hideCell">Department</th>
+                        <th id='lName' class="pointer"> Location</th>
+                    </tr>
+                </thead>
+                <tbody class='tableBody'></tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <script src="libs/js/main.js"></script>
+</body>
+</html>
