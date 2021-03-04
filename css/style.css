@@ -1,0 +1,466 @@
+/*---------------Reset-------------------*/
+body {
+    margin: 0;
+    width: 100%;
+    overflow:hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, td, th, tr {
+    margin: 0;
+    font-family: Ubuntu;
+}
+
+.hidden {
+    display: none !important;
+}
+
+thead  tr  th {
+    background: white;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    top: 0;
+}
+
+/*---------------Header------------------*/
+.header {
+    background: rgb(55,44,227);
+    background: linear-gradient(128deg, rgba(55,44,227,1) 0%, rgba(22,144,242,1) 32%, rgba(14,167,246,1) 56%, rgba(0,210,252,1) 70%, rgba(2,150,212,1) 78%, rgba(4,80,165,1) 100%, rgba(7,7,115,1) 100%); 
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+}
+.header h1, .header h2 {
+    color: seashell;
+    padding-top: 20px;
+}
+.logoDB {
+    color: seashell;
+    font-size: 4rem;
+    margin-right: 20px;
+}
+
+.logo {
+    width: 60%;
+    position: relative;
+    top: 25px;
+    left: 35px;
+}
+.userGreeting {
+    width: 25%;
+    display: flex;
+    align-self: center;
+}
+.userGreeting h2 {
+    width: 100%;
+    text-align: center;
+    padding-left: 10%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 3px solid rgb(42, 56, 89);
+    border-radius: 10px;
+    background: rgba(42, 56, 89, .6);
+}
+.userSign {
+    width: 15%;
+    display: flex;
+    align-items: center;
+}
+.userSign h3 {
+    font-size: 1rem;
+    margin-left: 20px;
+    background: rgba(43, 181, 115, .8);
+    color: seashell;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+.userSign h3:hover {
+    background: rgba(43, 181, 115, .3);
+    transition: .3s;
+    cursor: pointer;
+}
+
+/*-------------Dashboad---------------*/
+
+.addIcons {
+    font-size: 1rem;
+    background: green;
+    color: white;
+    border-radius: 50%;
+    padding: 0 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.remIcons {
+    font-size: 1rem;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0px 6px;
+    cursor: pointer;
+}
+.addIcons:hover, .remIcons:hover {
+    opacity: .5;
+}
+
+.editTables {
+    display: flex;
+    width: 40%;
+}
+.editTables h3 {
+    width: 30%;
+    font-size: 1rem;
+    border: 3px solid gray;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 10px;
+    border-radius: 50px;
+    margin: 7px auto;
+}
+.floatLeft {
+    float: right;
+}
+
+.displayData {
+    display: block;
+    width: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+.usersData {
+    width: 100%;
+    border-spacing: 0;
+    overflow: scroll;
+}
+.usersData tr th {
+    background-color: #ede3c7;
+    padding: 10px 15px;
+    border: 1px solid black;
+}
+.fnam {
+    font-weight: bold;
+}
+.editUserBtn {
+    color: blue;
+    text-decoration: underline;
+    font-size: .7rem;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.editPlusMenu {
+    position: relative;
+    display: flex;
+    z-index: 10;
+    justify-content: space-evenly;
+}
+.underlined {
+    text-decoration: underline;
+}
+.pointer {
+    cursor: pointer;
+}
+.tableData {
+    border: 1px solid gray;
+    padding: 10px 20px;
+
+}
+.trData {
+    cursor: pointer;
+    transition: 0.2s;
+}
+.trData:hover {
+    background: rgba(23, 154, 255, .4);
+    transition: .2s;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+.sticky {
+    position: -webkit-sticky;
+    position: sticky !important;
+    top: 0;
+}
+.editUsr{
+    cursor: pointer;
+}
+.userLayout {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.editUserForm {
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5);
+    background: white;
+    overflow: auto;
+    position: relative;
+    z-index: 21;
+}
+.editUserForm h1 {
+    text-align: center;
+    background: dodgerblue;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 20px;
+}
+.editUserForm table tr td {
+    padding: 10px 0;
+}
+#editUserLocation {
+    text-align: center;
+    padding-right: 20px;
+}
+.buttonWraper {
+    margin: 20px auto;
+    text-align: center;
+    margin-bottom: 4rem !important;
+}
+.buttonWraper button {
+    width: 150px;
+    padding: 10px 20px;
+    margin: 0 30px;
+    text-align: center;
+    background: dodgerblue;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.buttonWraper button:hover {
+    opacity: .7;
+}
+
+
+/*--------Remove user confirm dialog---------*/
+.remUserConfirm {
+    width: 36vw;
+    height: 30vh;
+    background-color: lightgray;
+    position: fixed;
+    top: calc(50% - 10vh);
+    left: calc(50% - 18vw);
+    z-index: 23;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.remUserConfirmWraper {
+    width: 100%;
+    text-align: center;
+}
+.remUserConfirmWraper button {
+    margin: 0 20px;
+}
+
+/*--------Edit user confirm dialog---------*/
+.editUserConfirm {
+    width: 40vw;
+    height: 30vh;
+    background-color: lightgray;
+    position: fixed;
+    top: calc(50% - 10vh);
+    left: calc(50% - 20vw);
+    z-index: 22;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+.editUserConfirmWraper {
+    width: 100%;
+    text-align: center;
+}
+.editUserConfirmWraper button {
+    margin: 0 20px;
+}
+
+/*--Add Department/Remove Department---*/
+.addDepartmentForm {
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5);
+    background: white;
+    overflow: auto;
+    position: relative;
+    z-index: 21;
+}
+.addDepartmentForm h1 {
+    text-align: center;
+    background: dodgerblue;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 20px;
+}
+.addDepartmentForm table tr td {
+    padding: 10px 0;
+}
+
+
+/*------Add location/Remove Location----*/
+.addLocationForm {
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5);
+    background: white;
+    overflow: auto;
+    position: relative;
+    z-index: 21;
+}
+.addLocationForm h1 {
+    text-align: center;
+    background: dodgerblue;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.removeLocationForm {
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5);
+    background: white;
+    overflow: auto;
+    position: relative;
+    z-index: 21;
+}
+.removeLocationForm h1 {
+    text-align: center;
+    background: dodgerblue;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+
+
+/*------create loading animation-------*/
+.loadingLayer {
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    z-index: 24;
+    justify-content: center;
+}
+
+.loading {
+    background: transparent;
+    text-align: center;
+    padding: 15px;
+    font-size: 4rem;
+  }
+
+.loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 7rem;
+    height: 7rem;
+    margin: 0 10px -6px 0;
+    border: 5px solid #18d26e;
+    border-top-color: #eee;
+    -webkit-animation: animate-loading 1s linear infinite;
+    animation: animate-loading 1s linear infinite;
+}
+.phoneHeader {
+    display: none;
+}
+
+
+@-webkit-keyframes animate-loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes animate-loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+@media only screen and (max-width: 700px) {
+    .header {
+        font-size: 1rem;
+    }
+   .editUserForm, .addDepartmentForm, .addLocationForm, .removeLocationForm {
+       width: 90%;
+       height: auto;
+   }
+   .hideCell {
+       display: none;
+   }
+   .editPlusMenu {
+       display: block;
+   }
+   .editTables {
+       display: flex;
+       width: 80%;
+       margin: 3px auto;
+   }
+   .editTables h3 {
+       margin: 7px 5px;
+       font-size: 0.9rem;
+       text-align: center;
+       background-color: dodgerblue;
+       border: none;
+       color: white;
+   }
+   .menu {
+        display: block;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+   .floatLeft {
+        display: block;
+        float: none;
+        margin-top: 5px;
+        text-align: center;
+   } 
+  
+}
