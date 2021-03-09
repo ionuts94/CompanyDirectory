@@ -20,6 +20,23 @@ $('document').ready(() =>{
 			$(`#user${i}`).remove();
 		}
 	}
+	$('.exitButton').on('click', () => {
+		$('.userLayout').trigger('click');
+	});
+	$('.okBtn').on('click', () => {
+		$('.successTextMessage').text(``);
+		$('.failedTextMessage').text(``);
+		$('.successDialogBox').addClass('hidden');
+		$('.failDialogBox').addClass('hidden');
+	});
+	function showSuccess(text) {
+		$('.successTextMessage').text(`${text}`);
+		$('.successDialogBox').removeClass('hidden');
+	}
+	function showFailed(text) {
+		$('.failedTextMessage').text(`${text}`);
+		$('.failDialogBox').removeClass('hidden');
+	}
 
 	//main request 
 	function orderBy(state) {
@@ -146,7 +163,7 @@ $('document').ready(() =>{
 				//clear fields after editing user
 				$('.userLayout').trigger('click');
 
-				alert('User edited');
+				showSuccess('User edited');
 			},
 			error: (jqXHR, textStatus, errorThrown) => {
 				console.log(jqXHR);
@@ -210,7 +227,7 @@ $('document').ready(() =>{
 				$('.loadingLayer').addClass('hidden');
 				$('.remUserConfirm').addClass('hidden');
 				$('.userLayout').addClass('hidden');
-				alert('User removed');
+				showSuccess('User removed');
 
 			},
 			error: (jqXHR, textStatus, errorThrown) => {
@@ -318,7 +335,7 @@ $('document').ready(() =>{
 			instertable = false;
 		}
 		if(insertable === false) {
-			alert(checkFields);
+			showFailed(checkFields);
 		} else {
 			let user = {
 				'firstName': $('#addUserFirstName').val(),
@@ -349,7 +366,7 @@ $('document').ready(() =>{
 				//clear fields after editing user
 				$('.userLayout').trigger('click');
 
-				alert('User added successfully');
+				showSuccess('User added successfully');
 			}
 		});
 	}
@@ -403,7 +420,7 @@ $('document').ready(() =>{
 			success: (result) => {
 				$('.userLayout').trigger('click');
 				$('.loadingLayer').addClass('hidden');
-				alert('Department added successfully');
+				showSuccess('Department added successfully');
 			},
 			error: (jqXHR, textStatus, errorThrown) => {
 				console.log('failed getting locations');
@@ -425,11 +442,11 @@ $('document').ready(() =>{
 		let locationID = $('#addDepartmentLocation').val();
 		console.log(name + " " + locationID);
 		if(!name) {
-			alert("Department filed is empty. Please insert department name");
+			showFailed("Department filed is empty. Please insert department name");
 			$('#addDepartmentName').val("");
 		} else {
 			if( await checkDepartementLocation(name, locationID)) {
-				alert("This department is already inserted in the database on this location. Please select another location or add a different department");
+				showFailed("This department is already inserted in the database on this location. Please select another location or add a different department");
 			} else {
 				let department = {
 					'name': name,
@@ -451,7 +468,6 @@ $('document').ready(() =>{
 				depID: department
 			},
 			success: (result) => {
-				console.log(result);
 				if(result['data'].length > 0) {
 					found = true;
 				}
@@ -473,7 +489,7 @@ $('document').ready(() =>{
 			},
 			success: (result) => {
 				$('.remDep').addClass('hidden');
-				alert('Department deleted');
+				showSuccess('Department deleted');
 				$('.loadingLayer').addClass('hidden');
 			},
 			error: (jqXHR, textStatus, errorThrown) => {
@@ -492,7 +508,7 @@ $('document').ready(() =>{
 	});
 	$('#submitRemoveDepartmentBtn').on('click', async () => {
 		if(await checkIfPeopleInDepartment($('#removeDepartment').val())) {
-			alert("You can't remove this department as there are people asigned to it.");
+			showFailed("You can't remove this department as there are people asigned to it.");
 		} else {
 			deleteDepartment($('#removeDepartment').val());
 		}
@@ -531,7 +547,7 @@ $('document').ready(() =>{
 			},
 			success: (result) => {
 				$('.loadingLayer').addClass('hidden');
-				alert("Location added to database");
+				showSuccess("Location added to database");
 			},
 			error: (jqXHR, textStatus, errorThrown) => {
 				console.log('failed getting locations');
@@ -548,13 +564,13 @@ $('document').ready(() =>{
 		let locationName = $('#addLocationName').val();
 		if(locationName) {
 			if(await checkIfLocationExists(locationName)) {
-				alert("This location was already added to database");
+				showFailed("This location was already added to database");
 				$('#addLocationName').val("");
 			} else {
 				insertLocation(locationName);
 			}
 		} else {
-			alert("Location name is missing");
+			showFailed("Location name is missing");
 		}
 	});
 
@@ -569,7 +585,6 @@ $('document').ready(() =>{
 				'locationID': location
 			},
 			success: (result) => {
-				console.log(result);
 				if(result['data'].length > 0) {
 					found = true;
 				}
@@ -592,7 +607,7 @@ $('document').ready(() =>{
 			},
 			success: (result) => {
 				$('.loadingLayer').addClass('hidden');
-				alert("Location removed");
+				showSuccess("Location removed");
 			},
 			error: (jqXHR, textStatus, errorThrown) => {
 				console.log('failed getting locations');
@@ -614,7 +629,7 @@ $('document').ready(() =>{
 	$('#submitRemoveLocationBtn').on('click', async () => {
 		let locationID = $('#removeLocationName').val();
 		if(await checkIfDepartmentInLocation(locationID)) {
-			alert("You can't remove this location as there are departments assigned to it.");
+			showFailed("You can't remove this location as there are departments assigned to it.");
 		} else {
 			deleteLocation(locationID);
 		}
@@ -626,9 +641,8 @@ $('document').ready(() =>{
 		$('.displayData').attr('style', `height: calc(100vh - ${substractHeight}px)`);
 	}
 	$(window).on("resize", () => {
-		$(this).width() > 700 ? setSectionHeight('.header', 60) : setSectionHeight('.header', 70);	
+		$(this).width() > 1000 ? setSectionHeight('.header', 60) : setSectionHeight('.header', 70);	
 	});	
-	$(this).width() > 700 ? setSectionHeight('.header', 60) : setSectionHeight('.header', 70);
-
+	$(this).width() > 1000 ? setSectionHeight('.header', 60) : setSectionHeight('.header', 70);
 
 });
