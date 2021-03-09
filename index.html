@@ -7,9 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Directory</title>
 
+    <link href="favicon.png" rel="icon">
+
     <!-----------Google fonts links-------------->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
     <!-----------Stylesheets links--------------->
     <link rel="stylesheet" type="text/css" href="css/all.css">
@@ -23,6 +27,32 @@
 
     <div class="loadingLayer hidden">
         <div class="loading"></div>
+    </div>
+    
+    <div class="failDialogBox hidden">
+       <div class="redWarning">
+            <h2>X</h2>
+       </div>
+       <div class="alignCenter">
+            <div class="textContainer">
+                <h1>Operation failed</h1>
+                <h2 class="textMessage failedTextMessage">text</h2>
+                <h3 class="okBtn">OK</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="successDialogBox hidden">
+       <div class="greenCheck">
+            <h2><i class="fas fa-check"></i></h2>
+       </div>
+       <div class="alignCenter">
+            <div class="textContainer">
+                <h1></h1>
+                <h2 class="textMessage successTextMessage">text</h2>
+                <h3 class="okBtn">OK</h3>
+            </div>
+        </div>        
     </div>
 
     <div class="remUserConfirm hidden">
@@ -43,6 +73,7 @@
 
     <div class="edit userLayout hidden"> <!-----------Edit user form----------->
         <div class="editUserForm">
+            <h2 class="exitButton">X</h2>
             <h1> Edit user </h1>
             <table style="margin: 0 auto;">
                 <tr>
@@ -79,6 +110,7 @@
 
     <div class="add userLayout hidden"> <!-----------Add user form----------->
         <div class="editUserForm">
+            <h2 class="exitButton">X</h2>
             <h1> Add user </h1>
             <table style="margin: 0 auto;">
                 <tr>
@@ -114,6 +146,7 @@
 
     <div class="addDep userLayout hidden">
         <div class="addDepartmentForm">
+            <h2 class="exitButton">X</h2>
             <h1> Add department </h1>
             <table style="margin: 0 auto;">
                 <tr>
@@ -133,6 +166,7 @@
 
     <div class="remDep userLayout hidden">
         <div class="addDepartmentForm">
+            <h2 class="exitButton">X</h2>
             <h1> Remove Department </h1>
             <table style="margin: 0 auto;">
                 <tr>
@@ -148,6 +182,7 @@
 
     <div class="addLoc userLayout hidden">
         <div class="addLocationForm">
+            <h2 class="exitButton">X</h2>
             <h1> Add location </h1>
             <table style="margin: 0 auto;">
                 <tr>
@@ -163,6 +198,7 @@
 
     <div class="remLoc userLayout hidden">
         <div class="removeLocationForm">
+            <h2 class="exitButton">X</h2>
             <h1> Remove location </h1>
             <table style="margin: 0 auto;">
                 <tr>
@@ -221,11 +257,11 @@
             <table class="usersData">
                 <thead class="sticky">
                     <tr>
-                        <th id='pLastName' class="pointer">Name</th>
+                        <th id='pLastName' class="pointer" style="border-top-left-radius: 7px;">Name</th>
                         <th id='pEmail' class="pointer hideCell">Email</th>
                         <th id='pJobTitle' class="pointer hideCell">Job Title</th>
                         <th id='dName' class="pointer hideCell">Department</th>
-                        <th id='lName' class="pointer"> Location</th>
+                        <th id='lName' class="pointer" style="border-top-right-radius: 7px;"> Location</th>
                     </tr>
                 </thead>
                 <tbody class='tableBody'></tbody>
